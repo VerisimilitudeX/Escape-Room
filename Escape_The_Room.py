@@ -1,7 +1,3 @@
-"""
-LESSON: 2.4 - While Loops
-EXERCISE: Code Your Own
-
 TITLE: [Choose Your Own Adventure]
 DESCRIPTION: [Welcome to Choose Your Own Adventure! I hope you enjoy it!]
 """
@@ -233,4 +229,3 @@ totalminute = minute2 - minute1
 
 print("You played this game for " + str(totalhour) + " hour(s) and " + str(totalminute) + " minute(s)!")
 print("Thanks for playing and I hope you have a great day!")
-# Turn in your Coding Exercise.
