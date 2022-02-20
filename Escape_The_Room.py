@@ -1,12 +1,13 @@
-TITLE: [Choose Your Own Adventure]
-DESCRIPTION: [Welcome to Choose Your Own Adventure! I hope you enjoy it!]
+"""
+Choose Your Own Adventure
+Welcome to Choose Your Own Adventure! I hope you enjoy it!
 """
 import datetime
 e = datetime.datetime.now()
 minute1 = e.minute
 hour1 = e.hour
 second1 = e.second
-# Introduction narration of game
+
 playing = True
 
 loop = 4
