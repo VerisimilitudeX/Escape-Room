@@ -1,55 +1,75 @@
 """
+LESSON: 4.1 - Lists
+EXERCISE: Code Your Own
+----------------------------------------------------------
 Choose Your Own Adventure
 Welcome to Choose Your Own Adventure! I hope you enjoy it!
 """
-import datetime
-e = datetime.datetime.now()
-minute1 = e.minute
-hour1 = e.hour
-second1 = e.second
 
+# Import Libraries
+import pygame
+pygame.init()
+
+# Define Variables
+c = pygame.time.Clock()
 playing = True
-
 loop = 4
+correct_answers = []
+
 print("---------------------------------------------------------")
-print("Welcome to Choose Your Own Adventure by Piyush Acharya. To move one from one scene to another, you \nhave to correctly answer the question. It's a bit like Escape The Room. If you're stuck on a \nquestion, just try all of the options to view all of the clever responses I have made. I hope you enjoy it!")
-anothergame = input("Ad: Do you want to play another game after this? y/n ")
+print("Welcome to Choose Your Own Adventure by Piyush Acharya. To move one from one scene to another, you have to correctly answer the question. It's a bit like Escape The Room. I hope you enjoy it!")
+pygame.time.wait(5000)
 while playing:
-    # First Input Loop
+    # Event Loop
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            playing = False
+    # Intro Loop
     while loop == 4:
+        intro_options = ['take mailbox', 'open mailbox', 'go east', 'open door', 'take boards', 'look at house', 'go southwest', 'read leaflet']
         if loop == 4:
             print("---------------------------------------------------------")
             print("You are standing in an open field west of a white house, with a boarded front door.")
             print("(A secret path leads southwest into the forest.)")
             print("There is a Small Mailbox.")
-            second = input("What do you do? You can 'take mailbox', 'open mailbox', 'go east', 'open door', 'take boards', 'look at house', 'go southwest', 'read leaflet' ")
+            second = input("What do you do? You can " + str(intro_options))
 
-        if second.lower() == ("take mailbox"):
+        if second.lower() == intro_options[0]:
             print("---------------------------------------------------------")
             print("It is securely anchored.")
-        elif second.lower() == ("open mailbox"):
+            pygame.time.wait(2000)
+        elif second.lower() == intro_options[1]:
             print("---------------------------------------------------------")
             print("Opening the small mailbox reveals a leaflet.")
-        elif second.lower() == ("go east"):
+            pygame.time.wait(2000)
+        elif second.lower() == intro_options[2]:
             print("---------------------------------------------------------")
             print("The door is boarded and you cannot remove the boards.")
-        elif second.lower() == ("open door"):
+            pygame.time.wait(2000)
+        elif second.lower() == intro_options[3]:
             print("---------------------------------------------------------")
             print("The door cannot be opened.")
-        elif second.lower() == ("take boards"):
+            pygame.time.wait(2000)
+        elif second.lower() == intro_options[4]:
             print("---------------------------------------------------------")
             print("The boards are securely fastened.")
-        elif second.lower() == ("look at house"):
+            pygame.time.wait(2000)
+        elif second.lower() == intro_options[5]:
             print("---------------------------------------------------------")
             print("The house is a beautiful colonial house which is painted white. It is clear that the owners must have been extremely wealthy.")
-        elif second.lower() == ("go southwest"):
+            pygame.time.wait(2000)
+        elif second.lower() == intro_options[6]:
+            correct_answers.append(intro_options[6])
             loop = 8
-        elif second.lower() == ("read leaflet"):
+            pygame.time.wait(2000)
+        elif second.lower() == intro_options[7]:
             print("---------------------------------------------------------")
             print("Welcome to the Choose Your Own Adventure by Piyush Acharya. Your mission is to find a Jade Statue.")
+            pygame.time.wait(2000)
         else:
-            print("---------------------------------------------------------")
-    
+            print("You entered something that the program can't recognize. Please restart it. ")
+            pygame.time.wait(4000)
+            break    
 
     # Southwest Loop
     while loop == 8:
@@ -68,11 +88,11 @@ while playing:
             print("---------------------------------------------------------")
             print("Storm-tossed trees block your way.")
         elif forest_inp.lower() == ("go east"):
+            correct_answers.append("go east")
             loop = 9
         else:
             print("---------------------------------------------------------")
     
-
     # East Loop and Grating Input
     while loop == 9:
         if loop == 9:
@@ -85,10 +105,10 @@ while playing:
             print("---------------------------------------------------------")
             print("You see a large ogre and turn around.")
         elif grating_inp.lower() == ("descend grating"):
+            correct_answers.append("descend grating")
             loop = 10
         else:
             print("---------------------------------------------------------")    
-
 
     # Grating Loop and Cave Input
     while loop == 10:
@@ -99,6 +119,7 @@ while playing:
             cave_inp = input("What do you do? You can 'descend staircase', 'take skeleton', 'smash skeleton', 'light up room', 'break skeleton', 'go down staircase', 'scale staircase' ")
 
         if cave_inp.lower() == ("descend staircase"):
+            correct_answers.append("descend grating")
             loop = 11
         elif cave_inp.lower() == ("take skeleton"):
             print("---------------------------------------------------------")
@@ -113,12 +134,13 @@ while playing:
             print("---------------------------------------------------------")
             print("I have two questions: Why and with what?")
         elif cave_inp.lower() == ("go down staircase"):
+            correct_answers.append("go down staircase")
             loop = 11
         elif cave_inp.lower() == ("scale staircase"):
+            correct_answers.append("scale staircase")
             loop = 11
         else:
             print("---------------------------------------------------------")
-
 
     # End of game
     while loop == 11:
@@ -126,7 +148,7 @@ while playing:
             print("---------------------------------------------------------")
             print("You have entered a mud-floored room.")
             print("Lying half buried in the mud is an old trunk, bulging with jewels.")
-            last_inp = input("What do you do? I won't tell you what to type for this. You only have one chance in this step. If you miss it you lose! ")
+            last_inp = input("What do you do? There are no options, you only have one chance in this step. If you miss it you lose! ")
             if last_inp.lower() == ("open trunk"):
                 print("---------------------------------------------------------")
                 print("You have found the Jade Statue and have completed your quest! Good job!")
@@ -150,6 +172,7 @@ while playing:
                 print("____/______/______/______/______/_____,=.o|o_.--,,___/______/______/______/____")
                 print("/______/______/______/______/______/______/______/______/______/______/______/ ")
                 print("*******************************************************************************")
+                correct_answers.append("open trunk")
                 loop = 11
         else:
             print("---------------------------------------------------------")
@@ -162,71 +185,4 @@ while playing:
         if exit_inp.lower() == ("y"):
             loop = 4
 print()
-
-e = datetime.datetime.now()
-minute2 = e.minute
-hour2 = e.hour
-second2 = e.second
-
-totalhour = hour2 - hour1
-totalminute = minute2 - minute1
-
-print("You played this game for " + str(totalhour) + " hour(s) and " + str(totalminute) + " minute(s)!")
-
-print()
-
-print("Thanks for playing my game! Your reward for playing this game is another game (Red Light, Green Light)")
-
-# Red Light Green Light
-e = datetime.datetime.now()
-minute1 = e.minute
-hour1 = e.hour
-second1 = e.second
-
-if anothergame == 'y':
-    import random
-    choice1 = random.randint(1, 2)
-    if choice1 == 1:
-        who = 'You got caught by the police for running a red light.'
-    else:
-        who = 'You caused someone to swerve to avoid crashing into you and crash into a street light.'
-    print("The goal of this game is to drive your car 10 yards with out runnning a red light. Good Luck!")
-    # Loop until the user reaches the goal
-    distance = 10
-    while distance > 0:
-
-        # Get the user input
-        print("You have " + str(distance) + " yards left to go.")
-        move = input("Would you like to move (yes or no)? ")
-        light = "Yellow"
-
-        # Make a weighted random choice between 2 options:
-        # - 25% chance of assigning light to be "Red"
-        # - 75% chance of assigning light to be "Green"
-        choice = random.randint(1, 100)
-        if choice <= 25:
-            light = 'Red'
-        else:
-            light = 'Green'
-
-        # Print the results
-        print(light + " Light!")
-        if move == "yes":
-            if light == "Red":
-                print(who + " You have to go back to the start.")
-                distance = 10
-            if light == "Green":
-                distance -= 2
-
-    print("You made it!")
-
-    e = datetime.datetime.now()
-minute2 = e.minute
-hour2 = e.hour
-second2 = e.second
-
-totalhour = hour2 - hour1
-totalminute = minute2 - minute1
-
-print("You played this game for " + str(totalhour) + " hour(s) and " + str(totalminute) + " minute(s)!")
-print("Thanks for playing and I hope you have a great day!")
+print("Thanks for playing my game! You completed the following options: " + str(correct_answers))
