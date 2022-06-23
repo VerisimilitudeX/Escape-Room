@@ -1,2 +1,2 @@
 # Escape-The-Room
-one of my best programs yet... choose your own adventure
+One of my best programs yet... based on Choose Your Own Adventure
