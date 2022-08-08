@@ -1,2 +1,2 @@
-# Escape-The-Room
-One of my best programs yet... based on Choose Your Own Adventure
+# Escape-Room
+One of my favorite programs from when I was learning Python in school...based on Choose Your Own Adventure
